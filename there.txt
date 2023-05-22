@@ -1,0 +1,42 @@
+前言：/home/fabric/Desktop/ncpsy/chaincode/model/model.go  中根据项目实际情况添加了相应数据类别和对应名称
+
+/home/fabric/Desktop/ncpsy/network/stop.sh  如有需要，可以在28行添加内容增强测试效率
+
+/home/fabric/Desktop/ncpsy/application/web/src/router/index.js  修改第54，157行
+
+/home/fabric/Desktop/ncpsy/chaincode/chaincode.go  修改第28行
+/home/fabric/Desktop/ncpsy/application/web/src/views/realestate/list/index.vue  修改第251行
+/home/fabric/Desktop/ncpsy/application/web/src/views/login/index.vue  修改第6行
+/home/fabric/Desktop/ncpsy/application/web/src/store/modules/account.js  修改第76行
+/home/fabric/Desktop/ncpsy/application/web/src/layout/components/Sidebar/Logo.vue 修改第27行
+后续修改太多了，这行数都乱了，没法记，创建git也没必要，下面说几个重点需要注意修改的文件和部分
+================================================================================
+/home/fabric/Desktop/ncpsy/application/web/src/store/modules/account.js
+        if (response[0].userName == '原料供应商1') {
+          roles = ['admin']
+        } else if (response[0].userName == '原料供应商2') {
+          roles = ['admin']
+        } else if (response[0].userName == '原料供应商3') {
+          roles = ['admin']
+        } else {
+          roles = ['editor']
+        }
+判断有链结创建权限的用户，原来只有一个所以判断条件不足，反正只有3个做个if链问题不大
+================================================================================
+/home/fabric/Desktop/ncpsy/application/web/src/views/realestate/list/index.vue
+前端定义部分，关键字：List。其定义了主要用于显示已经录入信息的界面（）（）（）
+================================================================================
+/home/fabric/Desktop/ncpsy/application/web/src/views/realestate/add/index.vue
+前端定义部分，关键字：add。其定义了添加信息时的界面和需要返回的数据（）（）（）（）
+================================================================================
+/home/fabric/Desktop/ncpsy/chaincode/api/realEstate.go
+函数CreateRealEstate和函数QueryRealEstateList的主要定义文件（）（（（）（）
+================================================================================
+/home/fabric/Desktop/ncpsy/chaincode/model/model.go
+结构体定义（）（）（）（（
+================================================================================
+/home/fabric/Desktop/ncpsy/application/server/api/v1/realEstate.go
+上链设置（）（）（）（）（）（
+================================================================================
+/home/fabric/Desktop/ncpsy/chaincode/chaincode.go
+帐号ID，名称配置（根据ID排序显示）

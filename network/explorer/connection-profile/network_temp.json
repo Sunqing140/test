@@ -1,0 +1,50 @@
+{
+  "name": "fabric-network",
+  "version": "1.0.0",
+  "client": {
+    "tlsEnable": true,
+    "adminCredential": {
+      "id": "admin",
+      "password": "123456"
+    },
+    "enableAuthentication": true,
+    "organization": "EN1MSP",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "channels": {
+    "appchannel": {
+      "peers": {
+        "peer0.enterprise1.com": {}
+      }
+    }
+  },
+  "organizations": {
+    "EN1MSP": {
+      "mspid": "EN1MSP",
+      "adminPrivateKey": {
+        "path": "/tmp/crypto/peerOrganizations/enterprise1.com/users/Admin@enterprise1.com/msp/keystore/priv_sk"
+      },
+      "peers": [
+        "peer0.enterprise1.com"
+      ],
+      "signedCert": {
+        "path": "/tmp/crypto/peerOrganizations/enterprise1.com/users/Admin@enterprise1.com/msp/signcerts/Admin@enterprise1.com-cert.pem"
+      }
+    }
+  },
+  "peers": {
+    "peer0.enterprise1.com": {
+      "tlsCACerts": {
+        "path": "/tmp/crypto/peerOrganizations/enterprise1.com/peers/peer0.enterprise1.com/tls/ca.crt"
+      },
+      "url": "grpc://peer0.enterprise1.com:7051"
+    }
+  }
+}

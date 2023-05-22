@@ -1,0 +1,19 @@
+version: '2.1'
+
+networks:
+  fabric_network:
+    external:
+      name: fabric_network
+
+services:
+  cow-trace.app:
+    build: .
+    image: cow-trace/application:latest
+    container_name: cow-trace.app
+    ports:
+      - "8000:8000"
+    volumes:
+      - /usr/share/zoneinfo/Asia/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ./../network/crypto-config:/network/crypto-config
+    networks:
+      - fabric_network

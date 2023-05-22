@@ -1,0 +1,39 @@
+EN1Peer0Cli="CORE_PEER_ADDRESS=peer0.enterprise1.com:7051 CORE_PEER_LOCALMSPID=EN1MSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/enterprise1.com/users/Admin@enterprise1.com/msp"
+EN1Peer1Cli="CORE_PEER_ADDRESS=peer1.enterprise1.com:7051 CORE_PEER_LOCALMSPID=EN1MSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/enterprise1.com/users/Admin@enterprise1.com/msp"
+EN2Peer0Cli="CORE_PEER_ADDRESS=peer0.enterprise2.com:7051 CORE_PEER_LOCALMSPID=EN2MSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/enterprise2.com/users/Admin@enterprise2.com/msp"
+EN2Peer1Cli="CORE_PEER_ADDRESS=peer1.enterprise2.com:7051 CORE_PEER_LOCALMSPID=EN2MSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/enterprise2.com/users/Admin@enterprise2.com/msp"
+
+TaobaoPeer0Cli="CORE_PEER_ADDRESS=peer0.taobao.com:7051 CORE_PEER_LOCALMSPID=TaobaoMSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/taobao.com/users/Admin@taobao.com/msp"
+TaobaoPeer1Cli="CORE_PEER_ADDRESS=peer1.taobao.com:7051 CORE_PEER_LOCALMSPID=TaobaoMSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/taobao.com/users/Admin@taobao.com/msp"
+JDPeer0Cli="CORE_PEER_ADDRESS=peer0.jd.com:7051 CORE_PEER_LOCALMSPID=JDMSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/jd.com/users/Admin@jd.com/msp"
+JDPeer1Cli="CORE_PEER_ADDRESS=peer1.jd.com:7051 CORE_PEER_LOCALMSPID=JDMSP CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/peer/jd.com/users/Admin@jd.com/msp"
+
+
+
+docker exec cli bash -c "$EN1Peer0Cli peer chaincode invoke -C appchannel -n cow-trace -c '{\"Args\":[\"createRealEstate\",\"5feceb66ffc8\",\"6b86b273ff34\",\"50\",\"30\",\"6b86b273ff34\",\"50\",\"6b86b273ff34\",\"50\",\"50\"]}'"
+docker exec cli bash -c "$EN1Peer0Cli peer chaincode invoke -C appchannel -n cow-trace -c '{\"Args\":[\"createRealEstate\",\"5feceb66ffc8\",\"6b86b273ff34\",\"50\",\"30\",\"50\"]}'"
+docker exec cli bash -c "$EN1Peer0Cli peer chaincode invoke -C appchannel -n cow-trace -c '{\"Args\":[\"createRealEstate\",\"5feceb66ffc8\",\"6b86b273ff34\"]}'"
+
+QueryRealEstateList
+
+docker exec cli bash -c "$EN1Peer0Cli peer chaincode invoke -C appchannel -n cow-trace -c '{\"Args\":[\"QueryRealEstateList\",\"5feceb66ffc8\"]}'"
+
+cd /home/real/cow-trace/network && ./stop.sh && ./start.sh && cd ../application && ./stop.sh && ./build.sh && ./start.sh
+/home/real/dev/2
+cd /home/real/dev/2/network && ./stop.sh && ./start.sh && cd ../application && ./stop.sh && ./build.sh && ./start.sh
+
+
+#原本命令
+docker exec cli bash -c "$TaobaoPeer0Cli peer chaincode invoke -C appchannel -n cow-trace -c '{\"Args\":[\"createRealEstate\",\"5feceb66ffc8\",\"4b227777d4dd\",\"50\",\"30\"]}'"
+docker exec cli bash -c "$TaobaoPeer0Cli peer chaincode invoke -C appchannel -n cow-trace -c '{\"Args\":[\"queryRealEstateList\"]}'"
+
+
+	yzcxx    string `json:"yzcxx"`
+	yzcwz     string `json:"yzcwz"`
+	yzcdh     string `json:"yzcdh"`
+	yzcnzebh    string `json:"yzcnzebh"`
+	yzctz   string `json:"yzctz"`
+	yzcrcsj  string `json:"yzcrcsj"`
+	yzcclsj  string `json:"yzcclsj"`
+	yzcymjzcs string `json:"yzcymjzcs"`
+
